@@ -1,0 +1,28 @@
+﻿@model Lab_3.Models.Trainer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="TrainerId" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Specialization"></label>
+        <input asp-for="Specialization" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ExperianceYears"></label>
+        <input asp-for="ExperianceYears" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Number"></label>
+        <input asp-for="Number" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>

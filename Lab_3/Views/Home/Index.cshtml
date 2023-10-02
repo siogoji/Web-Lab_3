@@ -1,0 +1,47 @@
+﻿@model List<Lab_3.Models.Trainer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Додати нового тренера</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">Id</th>
+            <th class="text-center">Ім'я</th>
+            <th class="text-center">Спеціалізація</th>
+            <th class="text-center">Досвід (Роки)</th>
+            <th class="text-center">Номер телефону</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainer in Model)
+        {
+            <tr>
+                <td class="text-center">@trainer.TrainerId</td>
+                <td class="text-center">@trainer.Name</td>
+                <td class="text-center">@trainer.Specialization</td>
+                <td class="text-center">@trainer.ExperianceYears</td>
+                <td class="text-center">@trainer.Number</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Home" asp-route-id="@trainer.TrainerId" class="btn btn-warning">Редагувати</a>
+                    <button class="btn btn-danger" onclick="confirmDelete(@trainer.TrainerId)">Видалити</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function confirmDelete(trainerId) {
+        var result = confirm("Ви впевнені, що хочете видалити тренера?");
+        if (result) {
+            window.location.href = "/Home/Delete/" + trainerId;
+        }
+    }
+</script>
